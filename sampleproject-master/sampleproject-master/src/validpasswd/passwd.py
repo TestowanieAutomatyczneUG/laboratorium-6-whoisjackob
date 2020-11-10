@@ -1,4 +1,5 @@
 import doctest
+import unittest
 
 znaki_s = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*', '|', ',', '&', '<', '`', '}', '.',
            '_', '=', ']', '!', '>', ';', '?', '#', '$', ')', '/'}
@@ -46,6 +47,30 @@ class Passwd:
             return False
         else:
             return False
+
+
+class PasswordTest(unittest.TestCase):
+
+    def setUp(self):
+        self.temp = Passwd()
+
+    def test_1(self):
+        self.assertEqual(False, self.temp.validPasswd("shsh"))
+
+    def test_2(self):
+        self.assertEqual(False, self.temp.validPasswd("345"))
+
+    def test_3(self):
+        self.assertEqual(False, self.temp.validPasswd("Shshdddd"))
+
+    def test_4(self):
+        self.assertEqual(False, self.temp.validPasswd("Shshddd9"))
+
+    def test_5(self):
+        self.assertEqual(True, self.temp.validPasswd("Shsh?dd9"))
+
+    def tearDown(self):
+        self.temp = None
 
 
 if __name__ == "__main__":
