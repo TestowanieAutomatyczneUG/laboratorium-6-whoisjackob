@@ -5,8 +5,21 @@ znaki_s = {'~', ':', "'", '+', '[', '\\', '@', '^', '{', '%', '(', '-', '"', '*'
 
 
 class Passwd:
+    """
+    >>> Passwd.validPasswd("shsh")
+    False
+    >>> Passwd.validPasswd("345")
+    False
+    >>> Passwd.validPasswd("Shshdddd")
+    False
+    >>> Passwd.validPasswd("Shshddd9")
+    False
+    >>> Passwd.validPasswd("Shsh?dd9")
+    True
+    """
 
-    def validPasswd(self, passwd):
+    @staticmethod
+    def validPasswd(passwd):
 
         znak_s = 0
         duza_litera = 0
